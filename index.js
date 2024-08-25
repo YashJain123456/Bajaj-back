@@ -1,11 +1,15 @@
 const express = require('express');
-const app = express();
 
+const cors = require('cors');
+const app = express();
 // Middleware to parse JSON
+app.use(cors());
 app.use(express.json());
 
 // POST method route
 app.post('/bfhl', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", true);
     const { data } = req.body;
 
     // Variables for response
@@ -28,9 +32,9 @@ app.post('/bfhl', (req, res) => {
     // Response
     const response = {
         is_success: true,
-        user_id: "john_doe_17091999", // You can replace it with dynamic data if needed
-        email: "john@xyz.com",
-        roll_number: "ABCD123",
+        user_id: "21BCE0253", // You can replace it with dynamic data if needed
+        email: "yashwork75754@gmail.com",
+        roll_number: "21BCE0253",
         numbers: numbers,
         alphabets: alphabets,
         highest_lowercase_alphabet: highestLowercaseAlphabet ? [highestLowercaseAlphabet] : []
@@ -41,6 +45,8 @@ app.post('/bfhl', (req, res) => {
 
 // GET method route
 app.get('/bfhl', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", true);
     res.status(200).json({ operation_code: 1 });
 });
 
